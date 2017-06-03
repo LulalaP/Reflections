@@ -1,0 +1,73 @@
+How did viewing a diff between two versions of a file help you see the bug that
+was introduced?
+
+    Fill in your answer here
+    用命令行对比文件差异真的是太爽了，计算机大法好！
+
+How could having easy access to the entire history of a file make you a more
+efficient programmer in the long term?
+
+    Fill in your answer here
+    很爽，不担心忘记修改的版本，不容易弄错。
+
+What do you think are the pros and cons of manually choosing when to create a
+commit, like you do in Git, vs having versions automatically saved, like Google
+docs does?
+
+    Fill in your answer here
+    ？？？
+
+Why do you think some version control systems, like Git, allow saving multiple
+files in one commit, while others, like Google Docs, treat each file separately?
+
+    Fill in your answer here
+    还没感受到
+
+How can you use the commands git log and git diff to view the history of files?
+
+    Fill in your answer here
+    只能想到保存两个文件，然后diff一下
+
+How might using version control make you more confident to make changes that
+could break something?
+
+    Fill in your answer here
+    随便改，很放心，反正能够找到历史版本
+
+Now that you have your workspace set up, what do you want to try using Git for?
+
+    Fill in your answer here
+    暂时先随便看看
+
+从长远来看，能轻松访问文件的整个历史记录将如何提高编程者的效率？
+
+    可以放心大胆进行修改，不怕改错，大刀阔斧也好，小改动也好，不担心删了就没了。可以方便地查看前后修改的对比，减轻查看负担。
+
+你认为，手动选择何时创建提交（像在 Git 中做的那样）与自动保存版本（如 Google Docs 所做的那样）各有何优缺点？
+
+    手动选择：优点：自由度高，可以自己选择合适的保存点，比如按照单个逻辑修改一次保存一次；
+            缺点：容易忘记
+    自动保存：优点：不会忘记；缺点：历史版本要么容易太多，要么容易太少，而且不按照逻辑来，后期查看可能效率不太高
+
+你认为一些版本控制系统（例如 Git）允许在一次提交中保存多个文件，而其他系统（例如 Google Docs）单独对待每个文件如何？
+
+    一次提交保存多个：若是文件之间有联动关系的话这个会很有用，牵一发而动全身的那种，不然要一个个改一次次提交挺麻烦的。
+
+如何使用命令 git log 和 git diff 来查看文件的历史记录？
+
+    git log:查看历史记录，修改提交的commit
+    git diff <file1> <file2> :对比查看两个历史版本的修改部分，括号里复制两次的校验码
+
+如何回到之前的存档点？
+
+    git checkout <校验码>:根目录下的文件就变成了之前某一个commit后的版本，可以直接查看运行
+    记住最新的checkout，以便随时回来。
+
+使用版本控制，如何让你更有信心进行有可能会造成破坏的更改？
+
+    有bug也不怕了，回头看很方便，知道哪里有改动，哪一次的提交引出了bug，就很好改了。
+    有了版本控制，可以在已经能运行的情况下还敢在底层进行大刀阔斧的改动，而不担心会毁掉整个项目，可以有助于更好地思考做出更酷的东西。如果没有版本控制，每次只敢改动一小点，怕改动一大就毁了。
+
+现在你已设置了工作空间，你想尝试使用 Git 来做些什么？
+
+    现在就只能拿来写代码把，刷PAT的题目。别的有Evernote也都能行。用git写论文不错！

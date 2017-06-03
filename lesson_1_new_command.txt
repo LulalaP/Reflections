@@ -1,0 +1,59 @@
+#查看当前状态
+git status
+
+git status -s
+
+#查看git属性
+git config --list
+
+#进入目录
+cd
+
+#回到上一级目录
+cd ..
+
+#显示当前目录
+pwd
+
+#添加刚改动好的文件到暂存区
+git add <file>
+
+#查看日志
+git log
+
+#将云端的代码库原封不动复制到本地
+git clone <网址>
+
+#diff两个commit
+ git diff f19cb1b80fe27e938e4d72770ca0a42f25e99ecc b0678b161fcf74467ed3a63110557e3d6229cfa6
+
+#git中添加新的默认编辑器，放入atom的地址
+git config --global core.editor "'C:\Users\Administrator\AppData\Local\atom\app-1.17.2\atom.exe' -n -w "
+alias atom="C:\Users\Administrator\AppData\Local\atom\app-1.17.2\atom.exe"
+
+#提交并添加message
+git commit -m "It's so cool, I just finished the lesson_1"
+
+#移动文件
+mv <file>
+
+#删除文件
+rm <file>
+
+#列出当前目录所有文件
+ls
+
+#列出包括隐藏文件在内的所有文件
+ls -a
+
+
+
+
+#注意：
+忽略文件
+一般我们总会有些文件无需纳入 Git 的管理，也不希望它们总出现在未跟踪文件列表。 通常都是些自动生成的文件，比如日志文件，或者编译过程中创建的临时文件等。 在这种情况下，我们可以创建一个名为 .gitignore 的文件，列出要忽略的文件模式。 来看一个实际的例子：
+
+$ cat .gitignore
+*.[oa]
+*~
+第一行告诉 Git 忽略所有以 .o 或 .a 结尾的文件。一般这类对象文件和存档文件都是编译过程中出现的。 第二行告诉 Git 忽略所有以波浪符（~）结尾的文件，许多文本编辑软件（比如 Emacs）都用这样的文件名保存副本。 此外，你可能还需要忽略 log，tmp 或者 pid 目录，以及自动生成的文档等等。 要养成一开始就设置好 .gitignore 文件的习惯，以免将来误提交这类无用的文件。
