@@ -1,0 +1,90 @@
+#新建一个代码库,在某目录下
+git init
+
+#对比工作目录下和暂存区的某个文件的改变，diff一下不带参数就可以
+git diff
+
+#对比暂存区和代码库的文件的变动
+git diff --staged
+
+#放弃工作目录和暂存区的所有更改
+git reset --hard
+(!!小心使用这个命令，这是唯一一个不能撤销的命令，只有在确定不需要这个修改，已经diff和diff --staged之后再操作)
+
+#回到分支的头
+git checkout master
+
+#不带参数，显示当前分支
+git branch
+
+#带参数，添加一个新分支
+git branch <分支名字>
+如：git branch easy-mode
+
+#切换到新建立的分支上去
+git checkout easy-mode
+
+#以更简洁的方式查看多个历史记录
+git log --graph --oneline master easy-mode
+(注意：在这之前要先使用命令git checkout easy-mode 检测出另一个分支)
+
+#如果在master的或者某个分支上有了一点新的改动，想保存这样的改动，只能就地建立一个新的分支
+git checkout -b <new_branch_name>
+(这条命令等价于两条命令：git branch <new_branch_name>; git checkout <new_branch_name>先建立新分支，再移动到新分支上)
+
+#合并两个分支
+git merge master <a_branch_name>
+
+#对比某个分支的commit和他的父级的对比差异
+git show <ID>
+
+#删除某个不需要的分支(只是删除标签，不会删除commit)
+git branch -d <branch_name>
+
+#待在某个分支，把另一个分支合并到当前分支
+git checkout branch1
+git merge branch2
+(!!关键是要记住，git merge 始终将所有指定的分支合并到当前检出的分支中，并为该分支新建一个提交。)
+
+#文件恢复到合并前的状态
+git merge --abort
+
+#显示最近的一个提交
+git log -n 1
+
+
+
+
+######################
+练习: 通过命令行合并
+检出 coins 分支
+如果你尚未检出 coins 分支，现在需要使用命令 git checkout coins 执行此操作，以便能引用它。完成此操作之后，请决定在完成合并之前是应使该分支保持检出状态，还是应检出另一个分支。
+
+有关 git merge 的说明
+git merge 还将在合并的版本中包含当前检出的分支。因此，如果检出了 branch1，并且运行 git merge branch2 branch3，则合并的版本会将 branch1 以及 branch2 和 branch3 组合起来。由于在你进行合并提交后 branch1 标签将会更新，因此，你不想将 branch1 中的更改包含在合并中是不可能的。有鉴于此，在合并之前应始终检出你打算合并的两个分支之一。应检出哪个分支取决于你想让哪个分支标签指向新的提交。
+
+由于检出的分支始终包含在合并中，因此，你可能已猜到，在合并两个分支时，无需在命令行上将两者都指定为 git merge 的参数。如果想将 branch2 合并到 branch1 中，只需键入 git checkout branch1，然后键入 git merge branch2 即可。键入 git merge branch1 branch2 的唯一原因是，它能帮助你对要合并的分支更加心中有数。
+
+另外，由于是合并两个分支，因此在命令行中按何顺序键入分支并不重要。关键是要记住，git merge 始终将所有指定的分支合并到当前检出的分支中，并为该分支新建一个提交。
+
+合并冲突
+如果收到类似以下所示的消息：
+
+Auto-merging game.js
+CONFLICT (content): Merge conflict in game.js
+Automatic merge failed; fix conflicts and then commit the result.
+这表示在你开始合并时，文件的状态不同于 Caroline 的文件状态。要修复此问题，请完成以下步骤：
+
+运行 git merge --abort，将文件恢复到你开始合并之前的状态
+仔细检查文件的状态。如果在检出 master 分支时运行 git log，则应看到 Caroline 的“Add color”提交是第二新的提交，而最新的提交应为你修复 bullet 错误的提交。如果使用 git diff 将你的提交与 Caroline 的提交进行对比，你的提交应在第 424 行引入 this.delayBeforeBullet = 10; 这行代码。应仅使用空格（无制表符）使该行的缩进程度与其下面一行相同，而且该行之后应无空格。
+在文件处于正确的状态后，利用你所做的更改新建一个提交。
+重新尝试合并。
+合并冲突（Windows 与 Unix 系统之间的换行符）
+背景：按下键盘上的“Enter”键时，实际上是告诉计算机在文本文件中插入一个不可见的字符，以便指示计算机应新起一行。Unix 系统会添加一个名为“换行”符的字符（或者 LF 或 \），而 Windows 系统会添加两个字符，即“回车”和“换行”（或者 CRLF 或 \r\n）。
+
+Caroline 的文件包含 LF，因为她的文件是在使用 LF 的 Mac OSX 上编辑的。如果某 Windows 用户要编辑 Caroline 的文件，Windows 文本编辑器可能会将所有 LF 均转换为 CRLF，以便该用户能够编辑文件。在该 Windows 用户将她的文件与 Caroline 的文件合并时，不同的 LF 和 CRLF 字符将会造成合并冲突。
+
+要修复此问题，Windows 用户应将 autocrlf 全局属性设置为 true：git config --global core.autocrlf true。有关更多信息，请访问以下网址：https://help.github.com/articles/dealing-with-line-endings/#platform-all
+
+将提交与所在分支进行对比
+Caroline 提到的将提交与所在分支进行对比的命令是 git show commit_id

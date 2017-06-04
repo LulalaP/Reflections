@@ -1,0 +1,45 @@
+What happens when you initialize a repository? Why do you need to do it?
+初始化版本库时会发生什么情况？为什么你需要这样做？
+
+    会在目录中建立一个隐藏的.git文件，里面专门记录历史。
+
+How is the staging area different from the working directory and the repository?
+What value do you think it offers?
+暂存区与工作目录和版本库有何不同？你认为它具有什么价值？
+
+    暂存区可以控制每次提交的逻辑区分，有逻辑区分度的底层修改才归总到一起进行提交，形成一次commit，每次commit都形成一个版本，其他的每次小改动都保存在工作目录下。这样很清楚，很好控制逻辑改变。
+
+How can you use the staging area to make sure you have one commit per logical
+change?
+如何使用暂存区确保为每项逻辑更改进行一次提交？
+
+    感觉改得差不多就可以先保存到暂存区，等到足够形成一项逻辑功能更改了，再决定提交。
+
+What are some situations when branches would be helpful in keeping your history
+organized? How would branches help?
+在哪些情况下，分支可以帮助你有序地组织历史记录？分支将如何提供帮助？
+
+    项目有很大改动，换个方向的尝试的改动的时候可以用分支。
+    某资深开发者：我会在开发新功能的时候，修改bug的时候都创建一个分支，把分支当作上下文切换。而master就被当作是质量担当，永远不会出问题，永远不会崩溃，一直能运行。这对于公开分享的项目尤其有用。还可以有一些实验分支，新功能分支，这些你在开发的时候就会预料到肯定会出错，但是这些分支开始可以作为非正式内容被分享出来。如果你现在正在研究某个功能，另一个地方出了一个bug，这时候就可以很轻松地脱离现有工作先去把bug解决了，然后再回来。如果现在的功能折腾了很久，有点厌倦，也可以换其他分支继续工作换换口味。
+
+How do the diagrams help you visualize the branch structure?
+图表如何帮助你直观显示分支结构？
+
+    查看历史，很清楚地看到分支在哪次提交后分离出来的，以及分支做了什么，主线做了什么。
+
+What is the result of merging two branches together? Why do we represent it in
+the diagram the way we do?
+将两个分支合并到一起有何结果？为什么我们在图表中表示它的方式是那样的？
+
+    支线融合到主线，成为了一根时间线上的提交，
+
+What are the pros and cons of Git's automatic merging vs. always doing merges
+manually?
+Git 的自动合并与始终手动进行合并各有何优缺点？
+
+    自动合并：
+      优点：方便，解决很多简单的合并，比如在不同的地方添加新的行，省时省力准确率高
+      缺点：无法解决一些复杂的合并，会产生冲突，然后需要人工进行修改
+    始终手动合并：
+      优点：一般能清楚地看到该处合并的必要性，可以自行选择合并与否
+      缺点：工作量太大，尤其在多人协作的时候，一个个手动查看合并，很多合并其实没有必要这么做。
