@@ -1,6 +1,10 @@
 #新建一个代码库,在某目录下
 git init
 
+#推送本地仓库到github新仓库
+git remote add origin https://github.com/lulalap/reflections.git
+git push -u origin master
+
 #对比工作目录下和暂存区的某个文件的改变，diff一下不带参数就可以
 git diff
 
